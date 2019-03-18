@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+.cent-carousel{
+    width:99%;
+    height:30%;
+}
+.img-responsive{
+    width:80%;
+    height:50%;
+}
