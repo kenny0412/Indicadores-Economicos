@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indicadores Economicos</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/Site.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -41,12 +40,26 @@
                      @Html.ActionLink("Servicios", "Index", "Home")
                 </li>
                 <li>
-                    @Html.ActionLink("Informacion", "Index", "Home")
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Inicio</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            @Html.ActionLink("Tasa de Politica Monetaria", "InfoTasaMonetaria", "InfoIndicadores")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Tasa Basica Pasiva", "InfoTasaBasicaPasiva", "InfoIndicadores")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Compra del dólar", "InfoCompraDolar", "InfoIndicadores")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Venta del dólar", "InfoVentaDolar", "InfoIndicadores")
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
 
-        <div class="container body-content">
+        
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
                     <a class="navbar-brand" href="#">
                         <img src="~/Content/assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" id="sidebarCollapse">
@@ -65,18 +78,14 @@
                 </nav>
 
                 <div class="container body-content">
-                    <div class="row mt-5">
-                        @RenderSection("carousel")
-                    </div>
+                    <div class=" mt-5">
                     @RenderBody()
+                    </div>
                     <hr />
                     <footer>
                         <p>&copy; @DateTime.Now.Year - Kenny Cardenas Reyes, Felipe Vargas Ramirez</p>
                     </footer>
-                </div>
-                <div class="line"></div>
-
-        </div>
+              
     </div>
 
     @Scripts.Render("~/bundles/jquery")
