@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoIndicadoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,6 +216,10 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\InfoIndicadores\InfoTasaMonetaria.cshtml" />
+    <Content Include="Views\InfoIndicadores\InfoTasaBasicaPasiva.cshtml" />
+    <Content Include="Views\InfoIndicadores\InfoCompraDolar.cshtml" />
+    <Content Include="Views\InfoIndicadores\InfoVentaDolar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
