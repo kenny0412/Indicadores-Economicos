@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -153,6 +154,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\check.png" />
+    <Content Include="Imagenes\economy.png" />
+    <Content Include="Imagenes\especifico.png" />
+    <Content Include="Imagenes\fondo.jpg" />
+    <Content Include="Imagenes\general.png" />
+    <Content Include="Imagenes\Organigrama.jpg" />
+    <Content Include="Imagenes\pen.png" />
+    <Content Include="Imagenes\people.png" />
+    <Content Include="Imagenes\social.png" />
+    <Content Include="Imagenes\trofeo.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -215,6 +226,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Info\Information.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
