@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+<html>
+<head>
+
+</head>
+<body>
+    <div class="card mb-3 mt-5">
+        <img src="~/Content/assets/ventadolar.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h3 class="card-title">Tipo de Cambio Venta del dólar </h3>
+            <p class="card-text">
+                La tasa o tipo de cambio entre dos divisas es la tasa o relación de proporción que existe entre el valor de una y la otra.
+                Dicha tasa es un indicador que expresa cuántas unidades de una divisa se necesitan para obtener una unidad de la otra.
+            </p>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Fórmula del cálculo del tipo de cambio de la venta del dólar</h3>
+            <p class="card-text">
+                El cálculo del tipo de cambio de referencia de venta para el día t será el promedio del
+                precio de las transacciones de venta ponderado por el monto de cada transacción para el día
+                t-1, durante el período definido por acuerdo de la Junta Directiva del BCCR.
+            </p>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Periocidad del cálculo del tipo de cambio de la venta del dólar</h3>
+            <p class="card-text">
+                El cálculo del tipo de cambio de referencia de venta se realiza de forma diaria, de manera que todos los días se actualiza su valor.
+            </p>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Impacto del indcador para los costarricenses al ocurrir una alza o baja en dicho indicador.</h3>
+            <p class="card-text">
+                La venta del dólar tiene un impacto muy significativo en los costarricenses, esto debido a la gran cantidad de personas que poseen o adquieren
+                préstamos, al aumentar la venta del dólar esto quiere decir que se necesita una mayor cantidad de colones para adquirir esta moneda, por lo cual
+                el préstamo terminaría siendo mayor. Por otr lado, al disminuir la venta del dólar los préstamos terminarían siendo menores.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable(@ViewBag.salida);
+
+        var options = {
+            title: 'Histórico del valor del tipo cambio venta del dólar en los últimos 5 años',
+          vAxis: {title: 'Tipo cambio Venta'},
+          hAxis: {title: 'Meses'},
+          seriesType: 'bars',
+          //series: {5: {type: 'line'}}
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+<body>
+    <div id="chart_div" style="width: 1200px; height: 500px;"></div>
+</body>
+</html>
+
+

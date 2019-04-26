@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+
+</head>
+<body>
+    <div class="card mb-3 mt-5">
+        <img src="~/Content/carousel/tasamonetaria.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Tasa de Política Monetaria</h5>
+            <p class="card-text">
+                La tasa de política monetaria es la tasa de interés que cobra el Banco Central de Costa Rica en sus operaciones
+                activas (préstamos) a un día plazo en el Mercado Integrado de Liquidez, y es determinada por la Junta Directiva de la autoridad monetaria.
+            </p>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Fórmula del cálculo de la Tasa Política Monetaria</h3>
+            <p class="card-text">
+                El BCCR establece su valor en el porcentaje correcto.
+            </p>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Periodicidad del cálculo de la Tasa Política Monetaria</h3>
+            <p class="card-text">
+                El cálculo del valor de la Tasa lo realiza el BCCR cada vez que sea conveniente.
+            </p>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Impacto del indcador para los costarricenses al ocurrir una alza o baja en dicho indicador.</h3>
+            <p class="card-text">
+                Al subir la tasa Política Monetaria, los interéses en préstamos suben, de esta manera los bancos mantienen el margen de ganancia.
+                Por lo que esto afectaría a las personas que sacan réstamos, buscan meter dinero al banco y además recibirían menos dinero por los ahorros 
+                y certificados a plazo.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+            ['Year', 'Jan-15', 'Feb-15', 'Mar-15', 'Apr-15', 'May-15', 'Jun-15', 'Jul-15', 'Aug-15', 'Sep-15', 'Oct-15', 'Nov-15', 'Dec-15'],
+          ['2014',  @ViewBag.valor,      @ViewBag.valor2,         @ViewBag.valor3,             @ViewBag.valor4,           @ViewBag.valor5,      @ViewBag.valor6, @ViewBag.valor7, @ViewBag.valor8, @ViewBag.valor9, @ViewBag.valor10, @ViewBag.valor11, @ViewBag.valor12],
+          ['2015',  @ViewBag.valor13,      @ViewBag.valor14,        @ViewBag.valor15,             @ViewBag.valor16,          @ViewBag.valor17,      @ViewBag.valor18, @ViewBag.valor19, @ViewBag.valor20, @ViewBag.valor21, @ViewBag.valor22, @ViewBag.valor23, @ViewBag.valor24],
+          ['2016',  @ViewBag.valor25,      @ViewBag.valor26,        @ViewBag.valor27,             @ViewBag.valor28,           @ViewBag.valor29,      @ViewBag.valor30, @ViewBag.valor31, @ViewBag.valor32, @ViewBag.valor33, @ViewBag.valor34, @ViewBag.valor35, @ViewBag.valor36],
+          ['2017',  @ViewBag.valor37,      @ViewBag.valor38,        @ViewBag.valor39,             @ViewBag.valor40,           @ViewBag.valor41,      @ViewBag.valor42, @ViewBag.valor43, @ViewBag.valor44, @ViewBag.valor45, @ViewBag.valor46, @ViewBag.valor47, @ViewBag.valor48],
+          ['2018',  @ViewBag.valor49,      @ViewBag.valor50,         @ViewBag.valor51,             @ViewBag.valor52,          @ViewBag.valor53,      @ViewBag.valor54, @ViewBag.valor55, @ViewBag.valor56, @ViewBag.valor57, @ViewBag.valor58, @ViewBag.valor59, @ViewBag.valor60],
+          ['2019',  @ViewBag.valor61,      @ViewBag.valor62,         @ViewBag.valor63, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ]);
+
+        var options = {
+            title: 'Histórico del valor de la Tasa Política Monetaria en los últimos 5 años',
+          vAxis: {title: 'Tasa Política Monetaria'},
+          hAxis: {title: 'Meses'},
+          seriesType: 'bars',
+          //series: {5: {type: 'line'}}
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+<body>
+    <div id="chart_div" style="width: 1200px; height: 500px;"></div>
+</body>
+</html>
+
+
+
+
