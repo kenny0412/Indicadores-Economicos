@@ -1,0 +1,82 @@
+﻿@model Indicadores_Economicos.Models.SUBSCRIPTION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SUBSCRIPTION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fullname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.identificationCard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.identificationCard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profesion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profesion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.canton)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.canton)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.district)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.district)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROVINCE.province1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROVINCE.province1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idUser }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

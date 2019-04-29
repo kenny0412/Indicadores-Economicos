@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IndicadoresEconomicosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ANSWER">
+          <Key>
+            <PropertyRef Name="idAnswer" />
+          </Key>
+          <Property Name="idAnswer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="author" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="startdate" Type="date" Nullable="false" />
+          <Property Name="content" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="idQuestion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROVINCE">
+          <Key>
+            <PropertyRef Name="idProvince" />
+          </Key>
+          <Property Name="idProvince" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="province" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="QUESTION">
+          <Key>
+            <PropertyRef Name="idQuestion" />
+          </Key>
+          <Property Name="idQuestion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="author" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="startdate" Type="date" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SUBSCRIPTION">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fullname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="identificationCard" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="profesion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idProvince" Type="int" Nullable="false" />
+          <Property Name="canton" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="district" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_SUBSCRIPTION_PROVINCE">
+          <End Role="PROVINCE" Type="Self.PROVINCE" Multiplicity="1" />
+          <End Role="SUBSCRIPTION" Type="Self.SUBSCRIPTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE">
+              <PropertyRef Name="idProvince" />
+            </Principal>
+            <Dependent Role="SUBSCRIPTION">
+              <PropertyRef Name="idProvince" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_DIRECTION">
+          <End Role="QUESTION" Type="Self.QUESTION" Multiplicity="1" />
+          <End Role="ANSWER" Type="Self.ANSWER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUESTION">
+              <PropertyRef Name="idQuestion" />
+            </Principal>
+            <Dependent Role="ANSWER">
+              <PropertyRef Name="idQuestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IndicadoresEconomicosModelStoreContainer">
+          <EntitySet Name="ANSWER" EntityType="Self.ANSWER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVINCE" EntityType="Self.PROVINCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QUESTION" EntityType="Self.QUESTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUBSCRIPTION" EntityType="Self.SUBSCRIPTION" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_SUBSCRIPTION_PROVINCE" Association="Self.FK_SUBSCRIPTION_PROVINCE">
+            <End Role="PROVINCE" EntitySet="PROVINCE" />
+            <End Role="SUBSCRIPTION" EntitySet="SUBSCRIPTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_DIRECTION" Association="Self.FK_USER_DIRECTION">
+            <End Role="QUESTION" EntitySet="QUESTION" />
+            <End Role="ANSWER" EntitySet="ANSWER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IndicadoresEconomicosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ANSWER">
+          <Key>
+            <PropertyRef Name="idAnswer" />
+          </Key>
+          <Property Name="idAnswer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="author" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="startdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="content" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idQuestion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="QUESTION" Relationship="Self.FK_USER_DIRECTION" FromRole="ANSWER" ToRole="QUESTION" />
+        </EntityType>
+        <EntityType Name="PROVINCE">
+          <Key>
+            <PropertyRef Name="idProvince" />
+          </Key>
+          <Property Name="idProvince" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="province1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SUBSCRIPTION" Relationship="Self.FK_SUBSCRIPTION_PROVINCE" FromRole="PROVINCE" ToRole="SUBSCRIPTION" />
+        </EntityType>
+        <EntityType Name="QUESTION">
+          <Key>
+            <PropertyRef Name="idQuestion" />
+          </Key>
+          <Property Name="idQuestion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="author" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="startdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ANSWER" Relationship="Self.FK_USER_DIRECTION" FromRole="QUESTION" ToRole="ANSWER" />
+        </EntityType>
+        <EntityType Name="SUBSCRIPTION">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="identificationCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="profesion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idProvince" Type="Int32" Nullable="false" />
+          <Property Name="canton" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PROVINCE" Relationship="Self.FK_SUBSCRIPTION_PROVINCE" FromRole="SUBSCRIPTION" ToRole="PROVINCE" />
+        </EntityType>
+        <Association Name="FK_USER_DIRECTION">
+          <End Role="QUESTION" Type="Self.QUESTION" Multiplicity="1" />
+          <End Role="ANSWER" Type="Self.ANSWER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUESTION">
+              <PropertyRef Name="idQuestion" />
+            </Principal>
+            <Dependent Role="ANSWER">
+              <PropertyRef Name="idQuestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUBSCRIPTION_PROVINCE">
+          <End Role="PROVINCE" Type="Self.PROVINCE" Multiplicity="1" />
+          <End Role="SUBSCRIPTION" Type="Self.SUBSCRIPTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE">
+              <PropertyRef Name="idProvince" />
+            </Principal>
+            <Dependent Role="SUBSCRIPTION">
+              <PropertyRef Name="idProvince" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IndicadoresEconomicosEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ANSWER" EntityType="Self.ANSWER" />
+          <EntitySet Name="PROVINCE" EntityType="Self.PROVINCE" />
+          <EntitySet Name="QUESTION" EntityType="Self.QUESTION" />
+          <EntitySet Name="SUBSCRIPTION" EntityType="Self.SUBSCRIPTION" />
+          <AssociationSet Name="FK_USER_DIRECTION" Association="Self.FK_USER_DIRECTION">
+            <End Role="QUESTION" EntitySet="QUESTION" />
+            <End Role="ANSWER" EntitySet="ANSWER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUBSCRIPTION_PROVINCE" Association="Self.FK_SUBSCRIPTION_PROVINCE">
+            <End Role="PROVINCE" EntitySet="PROVINCE" />
+            <End Role="SUBSCRIPTION" EntitySet="SUBSCRIPTION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IndicadoresEconomicosModelStoreContainer" CdmEntityContainer="IndicadoresEconomicosEntities4">
+          <EntitySetMapping Name="ANSWER">
+            <EntityTypeMapping TypeName="IndicadoresEconomicosModel.ANSWER">
+              <MappingFragment StoreEntitySet="ANSWER">
+                <ScalarProperty Name="idAnswer" ColumnName="idAnswer" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="startdate" ColumnName="startdate" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="idQuestion" ColumnName="idQuestion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVINCE">
+            <EntityTypeMapping TypeName="IndicadoresEconomicosModel.PROVINCE">
+              <MappingFragment StoreEntitySet="PROVINCE">
+                <ScalarProperty Name="idProvince" ColumnName="idProvince" />
+                <ScalarProperty Name="province1" ColumnName="province" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUESTION">
+            <EntityTypeMapping TypeName="IndicadoresEconomicosModel.QUESTION">
+              <MappingFragment StoreEntitySet="QUESTION">
+                <ScalarProperty Name="idQuestion" ColumnName="idQuestion" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="startdate" ColumnName="startdate" />
+                <ScalarProperty Name="content" ColumnName="content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUBSCRIPTION">
+            <EntityTypeMapping TypeName="IndicadoresEconomicosModel.SUBSCRIPTION">
+              <MappingFragment StoreEntitySet="SUBSCRIPTION">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="identificationCard" ColumnName="identificationCard" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="profesion" ColumnName="profesion" />
+                <ScalarProperty Name="idProvince" ColumnName="idProvince" />
+                <ScalarProperty Name="canton" ColumnName="canton" />
+                <ScalarProperty Name="district" ColumnName="district" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
