@@ -140,6 +140,7 @@
     <Compile Include="Controllers\CompraDolarController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QUESTIONsController.cs" />
     <Compile Include="Controllers\SuscripcionController.cs" />
     <Compile Include="Controllers\TasaMonetariaController.cs" />
     <Compile Include="Controllers\VentaDolarController.cs" />
@@ -312,6 +313,11 @@
     <Content Include="Views\Suscripcion\Details.cshtml" />
     <Content Include="Views\Suscripcion\Edit.cshtml" />
     <Content Include="Views\Suscripcion\Index.cshtml" />
+    <Content Include="Views\QUESTIONs\Create.cshtml" />
+    <Content Include="Views\QUESTIONs\Delete.cshtml" />
+    <Content Include="Views\QUESTIONs\Details.cshtml" />
+    <Content Include="Views\QUESTIONs\Edit.cshtml" />
+    <Content Include="Views\QUESTIONs\Index.cshtml" />
     <None Include="Web References\cr.fi.bccr.gee\wsIndicadoresEconomicos.wsdl" />
   </ItemGroup>
   <ItemGroup>
