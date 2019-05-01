@@ -1,43 +1,106 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>Indicadores Economicos</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+            <a class="navbar-brand" href="#">
+                <img src="~/Content/assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" id="sidebarCollapse">
+                Indicadores Economicos
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    @Html.ActionLink("Inicio", "Index", "Home", new { @class = "nav-item nav-link" })
+                    <a class="nav-item nav-link" href="http://localhost:50371/Information/Information">Informacion</a>
+                    @Html.ActionLink("Foro", "Index", "Blog", new { @class = "nav-item nav-link" })
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
+            <button class="btn btn-success"><a class="nav-item nav-link  text-white" href="http://localhost:50371/suscripcion/create">Suscribirme</a></button>
+
+        </nav>
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Indicadores Economicos</h3>
             </div>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Inicio</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            @Html.ActionLink("Home", "Index", "Home")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Foro", "Information", "Information")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Suscribirme", "create", "Suscripcion")
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    @Html.ActionLink("Sobre", "Information", "Information")
+                </li>
+                <li>
+                    @Html.ActionLink("Servicios", "Index", "Home")
+                </li>
+                <li>
+                    <a href="#IndiSub" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Indicador</a>
+                    <ul class="collapse list-unstyled" id="IndiSub">
+                        <li>
+                            @Html.ActionLink("Tasa de Politica Monetaria", "Index", "TasaMonetaria")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Tasa Basica Pasiva", "Index", "BasicaPasiva")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Compra del dólar", "Index", "CompraDolar")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Venta del dólar", "Index", "VentaDolar")
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+
+
+
+        <div class="container body-content">
+            <div class=" mt-5">
+                @RenderBody()
+            </div>
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Kenny Cardenas Reyes, Felipe Vargas Ramirez</p>
+            </footer>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $('#myModal').modal('show');
+    </script>
 </body>
 </html>
